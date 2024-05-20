@@ -1,0 +1,109 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Light text color */
+    line-height: 1.6;
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center; /* Center-align content in all containers */
+}
+
+/* Header styles */
+header {
+    background-color: #222; /* Darker background color */
+    color: #fff;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 1.8em;
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: center; /* Center-align navigation */
+}
+
+nav ul {
+    list-style: none;
+    display: flex; /* Align menu items horizontally */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+nav ul li {
+    margin-left: 20px; /* Adjust spacing between menu items */
+}
+
+nav ul li:first-child {
+    margin-left: 0; /* Remove margin from the first menu item */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    text-transform: uppercase; /* Capitalize all letters for bookish style */
+}
+
+nav ul li a:hover {
+    color: #d4af37; /* Brown color for hover effect, bookish style */
+}
+
+/* Section styles */
+section {
+    padding: 40px 0;
+}
+
+section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer; /* Add cursor pointer for better UX */
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer styles */
+footer {
+    background-color: #222; /* Darker background color */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Links styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

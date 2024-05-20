@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>Likhith Sai</h1> <!-- Your name or logo -->
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="container">
+                <h2>Welcome to world of technology</h2>
+                <br><hr><br>
+                <blockquote><strong>Technology is a mirror reflecting our greatest strengths and darkest flaws.
+ <br> It amplifies both the brilliance of our creation and the shadow of our destruction. <br> We must choose wisely what image we cast.</strong></blockquote><br>
+                <br><hr><br>
+                <div class="resume">
+                    <p>Here you can download my resume</p>
+                    <button class="button" onclick="window.location.href='assets/Resume.pdf'">Download Resume</button>
+                </div>
+                <br>
+                <p>This is where you can find information about my projects and public extensions.</p>
+                <br>
+                <strong>Follow me on</strong><br>
+                <button class="button" onclick="window.location.href='https://www.github.com/Likhithsai2580'">GitHub</button>
+                <button class="button" onclick="window.location.href='https://twitter.com/LuckyMod25'">Twitter (X)</button>
+                <button class="button" onclick="window.location.href='https://www.youtube.com/@hackersareherewhereareyou'">YouTube</button>
+                <button class="button" onclick="window.location.href='https://discord.gg/2BGD2Cuk34'">Discord</button>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div id="projects-list"></div> <!-- This is where the projects will be displayed -->
+                <hr>
+            </div>
+        
+            <script>
+                // GitHub username
+                const username = 'Likhithsai2580';
+        
+                // Fetch repositories from GitHub API
+                fetch(`https://api.github.com/users/${username}/repos`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Filter out forked repositories
+                        const ownRepos = data.filter(repo => !repo.fork);
+        
+                        // Get the container where projects will be displayed
+                        const projectsContainer = document.getElementById('projects-list');
+        
+                        // Iterate over each own repository and create a card for each project
+                        ownRepos.forEach(repo => {
+                            // Create a div to hold the project card
+                            const projectCard = document.createElement('div');
+                            projectCard.classList.add('project-card'); // Add a class for styling
+        
+                            // Project title (bold)
+                            const title = document.createElement('h3');
+                            title.innerHTML = `<strong>${repo.name}</strong>`;
+                            projectCard.appendChild(title);
+                            
+                            // Line break
+                            projectCard.appendChild(document.createElement('br'));
+        
+                            // Project description
+                            const description = document.createElement('p');
+                            description.textContent = repo.description || 'No description available';
+                            projectCard.appendChild(description);
+                            
+                            // Line break
+                            projectCard.appendChild(document.createElement('br'));
+        
+                            // Button to view on GitHub
+                            const githubLink = document.createElement('a');
+                            githubLink.href = repo.html_url;
+                            githubLink.textContent = 'View on GitHub';
+                            githubLink.classList.add('github-link'); // Add a class for styling
+                            projectCard.appendChild(githubLink);
+                            
+                            // Line break
+                            projectCard.appendChild(document.createElement('br'));
+        
+                            // Horizontal line to separate repositories
+                            projectCard.appendChild(document.createElement('hr'));
+        
+                            // Append the project card to the container
+                            projectsContainer.appendChild(projectCard);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching repositories:', error);
+                        // Display an error message if fetching fails
+                        const errorMessage = document.createElement('p');
+                        errorMessage.textContent = 'Failed to fetch repositories. Please try again later.';
+                        document.getElementById('projects-list').appendChild(errorMessage);
+                    });
+            </script>
+        </section>
+
+        <section id="about-me">
+            <div class="container">
+                <h2>About Me</h2>
+                <br><hr><br>
+                <p><strong>Greetings! I'm Likhith Sai, also known as "hackers are here, where are you?" on YouTube. I'm a versatile individual deeply entrenched in the realm of technology and creativity. My journey encompasses a diverse range of roles, including YouTuber, pentester, programmer, web developer, and game developer. This multifaceted approach allows me to explore various facets of technology while continually expanding my knowledge and skill set.</strong></p>
+                <br>
+                <h3>YouTube</h3>
+                <p>YouTube serves as my platform for sharing knowledge, experiences, and insights with a global audience. Through engaging videos, tutorials, and discussions, I aim to demystify complex concepts in cybersecurity, programming, web development, and game development, making them accessible to enthusiasts and learners alike.</p>
+                <br>
+                <h3>Pentester</h3>
+                <p>Delving into the world of cybersecurity, I fulfill the crucial role of a pentester, meticulously assessing the security posture of systems and networks. Employing a blend of automated tools and manual techniques, I uncover vulnerabilities and weaknesses, providing organizations with actionable insights to fortify their defenses and safeguard against potential threats.</p>
+                <br>
+                <h3>Programmer</h3>
+                <p>As a fervent advocate of coding, I immerse myself in the art and science of programming. Whether it's crafting elegant algorithms, developing software applications, or architecting scalable systems, I revel in the creativity and problem-solving inherent in the coding process. My proficiency spans multiple programming languages and paradigms, enabling me to tackle diverse challenges with confidence and expertise.</p>
+                <br>
+                <h3>Web Developer</h3>
+                <p>With a keen eye for design and a penchant for innovation, I specialize in crafting dynamic and user-centric websites. From conceptualization to execution, I leverage my expertise in frontend and backend development to create seamless digital experiences that resonate with audiences. Whether it's a sleek portfolio, an e-commerce platform, or a complex web application, I thrive on bringing ideas to life in the virtual realm.</p>
+                <br>
+                <h3>Game Developer</h3>
+                <p>Gaming has always been a passion of mine, driving me to explore the intricacies of game development. Harnessing the power of game engines and creative storytelling, I embark on the journey of crafting immersive gaming experiences that captivate players and ignite their imaginations. From indie projects to ambitious AAA titles, I embrace the challenges and rewards of game development with enthusiasm and dedication.</p>
+                <br>
+                <h3>Cybersecurity Enthusiast</h3>
+                <p>Beyond my professional endeavors, I harbor a deep-seated interest in cybersecurity and digital privacy. I actively engage in research, discussions, and community initiatives aimed at raising awareness and fostering a safer online environment for all. Whether it's advocating for encryption standards or sharing best practices for online security, I'm committed to empowering individuals and organizations to protect their digital assets and privacy rights.</p>
+                <br><hr><br>
+                <h3>Resume</h3>
+                <div class="resume">
+                    <p>Here you can download my resume</p>
+                    <button class="button" onclick="window.location.href='assets/Resume.pdf'">Download Resume</button>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Likhith Sai</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file if needed -->
+</body>
+
+</html>
