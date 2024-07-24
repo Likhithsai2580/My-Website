@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="google-site-verification" content="USo3C6UO184TJRfFsuZVcntQhtk8qFxNGQCyglOo0ug" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+    <meta name="description" content="Likhith Sai's Portfolio showcasing skills in technology and creativity.">
+    <meta name="keywords" content="Likhith Sai, Portfolio, Technology, Programming, Web Development, Ethical Hacking, Cybersecurity">
+    <meta name="author" content="Likhith Sai">
+    <title>Likhith Sai - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <header>
         <nav>
             <div class="container">
-                <h1>Likhith Sai</h1> <!-- Your name or logo -->
+                <h1>Likhith Sai</h1>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#projects">Projects</a></li>
@@ -21,18 +23,16 @@
             </div>
         </nav>
     </header>
-
     <main>
         <section id="home">
             <div class="container">
-                <h2>Welcome to world of technology</h2>
+                <h2>Welcome to the world of technology</h2>
                 <br><hr><br>
-                <blockquote><strong>Technology is a mirror reflecting our greatest strengths and darkest flaws.
- <br> It amplifies both the brilliance of our creation and the shadow of our destruction. <br> We must choose wisely what image we cast.</strong></blockquote><br>
+                <blockquote><strong>Technology is a mirror reflecting our greatest strengths and darkest flaws. It amplifies both the brilliance of our creation and the shadow of our destruction. We must choose wisely what image we cast.</strong></blockquote><br>
                 <br><hr><br>
                 <div class="resume">
                     <p>Here you can download my resume</p>
-                    <button class="button" onclick="window.location.href='assets/Resume.pdf'">Download Resume</button>
+                    <button class="button" onclick="window.location.href='https://github.com/user-attachments/files/15943830/Resume.pdf'">Download Resume</button>
                 </div>
                 <br>
                 <p>This is where you can find information about my projects and public extensions.</p>
@@ -44,82 +44,48 @@
                 <button class="button" onclick="window.location.href='https://discord.gg/2BGD2Cuk34'">Discord</button>
             </div>
         </section>
-
         <section id="projects">
             <div class="container">
                 <h2>Projects</h2>
-                <div id="projects-list"></div> <!-- This is where the projects will be displayed -->
+                <div id="projects-list"></div>
                 <hr>
             </div>
-        
             <script>
-                // GitHub username
                 const username = 'Likhithsai2580';
-        
-                // Fetch repositories from GitHub API
                 fetch(`https://api.github.com/users/${username}/repos`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
+                    .then(response => response.json())
                     .then(data => {
-                        // Filter out forked repositories
                         const ownRepos = data.filter(repo => !repo.fork);
-        
-                        // Get the container where projects will be displayed
                         const projectsContainer = document.getElementById('projects-list');
-        
-                        // Iterate over each own repository and create a card for each project
                         ownRepos.forEach(repo => {
-                            // Create a div to hold the project card
                             const projectCard = document.createElement('div');
-                            projectCard.classList.add('project-card'); // Add a class for styling
-        
-                            // Project title (bold)
+                            projectCard.classList.add('project-card');
                             const title = document.createElement('h3');
                             title.innerHTML = `<strong>${repo.name}</strong>`;
                             projectCard.appendChild(title);
-                            
-                            // Line break
                             projectCard.appendChild(document.createElement('br'));
-        
-                            // Project description
                             const description = document.createElement('p');
                             description.textContent = repo.description || 'No description available';
                             projectCard.appendChild(description);
-                            
-                            // Line break
                             projectCard.appendChild(document.createElement('br'));
-        
-                            // Button to view on GitHub
                             const githubLink = document.createElement('a');
                             githubLink.href = repo.html_url;
                             githubLink.textContent = 'View on GitHub';
-                            githubLink.classList.add('github-link'); // Add a class for styling
+                            githubLink.classList.add('github-link');
                             projectCard.appendChild(githubLink);
-                            
-                            // Line break
                             projectCard.appendChild(document.createElement('br'));
-        
-                            // Horizontal line to separate repositories
                             projectCard.appendChild(document.createElement('hr'));
-        
-                            // Append the project card to the container
                             projectsContainer.appendChild(projectCard);
                         });
                     })
                     .catch(error => {
                         console.error('Error fetching repositories:', error);
-                        // Display an error message if fetching fails
                         const errorMessage = document.createElement('p');
                         errorMessage.textContent = 'Failed to fetch repositories. Please try again later.';
                         document.getElementById('projects-list').appendChild(errorMessage);
                     });
             </script>
         </section>
-
         <section id="about-me">
             <div class="container">
                 <h2>About Me</h2>
@@ -147,20 +113,16 @@
                 <h3>Resume</h3>
                 <div class="resume">
                     <p>Here you can download my resume</p>
-                    <button class="button" onclick="window.location.href='assets/Resume.pdf'">Download Resume</button>
+                    <button class="button" onclick="window.location.href='https://github.com/user-attachments/files/15943830/Resume.pdf'">Download Resume</button>
                 </div>
-            </div>
             </div>
         </section>
     </main>
-
     <footer>
         <div class="container">
             <p>&copy; 2024 Likhith Sai</p>
         </div>
     </footer>
-
-    <script src="script.js"></script> <!-- Link to your JavaScript file if needed -->
+    <script src="script.js"></script>
 </body>
-
 </html>
